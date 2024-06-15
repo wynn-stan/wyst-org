@@ -2,9 +2,13 @@
   "name": "@wyst-org/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start-wyst":"nx run wyst-portfolio-v2:dev --port=2101",
+    "build-wyst":"nx build wyst-portfolio-v2"
+  },
   "private": true,
   "dependencies": {
+    "framer-motion": "^11.2.10",
     "next": "14.2.3",
     "react": "18.3.1",
     "react-dom": "18.3.1",
@@ -18,8 +22,10 @@
     "@nx/jest": "19.3.0",
     "@nx/js": "19.3.0",
     "@nx/next": "19.3.0",
+    "@nx/react": "19.3.0",
     "@nx/workspace": "19.3.0",
     "@swc-node/register": "~1.9.1",
+    "@swc/cli": "~0.3.12",
     "@swc/core": "~1.5.7",
     "@swc/helpers": "~0.5.11",
     "@swc/plugin-styled-components": "^1.5.67",
@@ -31,6 +37,7 @@
     "@types/styled-components": "5.1.26",
     "@typescript-eslint/eslint-plugin": "^7.3.0",
     "@typescript-eslint/parser": "^7.3.0",
+    "autoprefixer": "10.4.13",
     "babel-jest": "^29.4.1",
     "babel-plugin-styled-components": "1.10.7",
     "eslint": "~8.57.0",
@@ -43,7 +50,9 @@
     "jest": "^29.4.1",
     "jest-environment-jsdom": "^29.4.1",
     "nx": "19.3.0",
+    "postcss": "8.4.38",
     "prettier": "^2.6.2",
+    "tailwindcss": "3.4.3",
     "ts-jest": "^29.1.0",
     "ts-node": "10.9.1",
     "typescript": "~5.4.2"

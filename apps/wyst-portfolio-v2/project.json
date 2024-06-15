@@ -4,6 +4,48 @@
   "sourceRoot": "apps/wyst-portfolio-v2",
   "projectType": "application",
   "tags": [],
-  "// targets": "to see all targets run: nx show project wyst-portfolio-v2 --web",
-  "targets": {}
+  "targets": {
+    "build": {
+      "executor": "@nx/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/wyst-portfolio-v2/"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "apps/wyst-portfolio-v2"
+        },
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "wyst-portfolio-v2:build",
+        "dev": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "wyst-portfolio-v2:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "wyst-portfolio-v2:build:production",
+          "dev": false
+        }
+      }
+    },
+    "export": {
+      "executor": "@nx/next:export",
+      "options": {
+        "buildTarget": "wyst-portfolio-v2:build:production"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    }
+  }
 }
