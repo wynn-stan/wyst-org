@@ -1,10 +1,17 @@
-import './global.css';
+import { Work_Sans } from 'next/font/google';
+
 import { StyledComponentsRegistry } from './registry';
+import './global.css';
 
 export const metadata = {
   title: 'Wyst Porfolio',
   description: 'Developer portfolio by Winston Lamptey',
 };
+
+const WorkSans = Work_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 export default function RootLayout({
   children,
@@ -13,7 +20,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <head></head>
+      <body className={WorkSans.className}>
         <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
       </body>
     </html>

@@ -3,12 +3,16 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start-wyst":"nx run wyst-portfolio-v2:dev --port=2101",
-    "build-wyst":"nx build wyst-portfolio-v2"
+    "start-wyst": "nx run wyst-portfolio-v2:dev --port=2101",
+    "build-wyst": "nx build wyst-portfolio-v2"
   },
   "private": true,
   "dependencies": {
+    "@react-hook/window-size": "^3.1.1",
+    "@restart/ui": "^1.6.9",
+    "clsx": "^2.1.1",
     "framer-motion": "^11.2.10",
+    "lucide-react": "^0.395.0",
     "next": "14.2.3",
     "react": "18.3.1",
     "react-dom": "18.3.1",
