@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import { Work_Sans } from 'next/font/google';
 
 import { StyledComponentsRegistry } from './registry';
@@ -23,6 +24,7 @@ export default function RootLayout({
       <head></head>
       <body className={WorkSans.className}>
         <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        <Analytics />
       </body>
     </html>
   );
