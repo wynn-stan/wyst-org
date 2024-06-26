@@ -2,7 +2,8 @@ import { Analytics } from '@vercel/analytics/react';
 import { Work_Sans } from 'next/font/google';
 
 import { StyledComponentsRegistry } from './registry';
-import './global.css';
+import { Layouts } from '../components';
+import './global.scss';
 
 export const metadata = {
   title: 'Wyst Porfolio',
@@ -14,6 +15,12 @@ const WorkSans = Work_Sans({
   display: 'swap',
 });
 
+// const PoppinsFont = Poppins({
+//   subsets: ['latin'],
+//   display: 'swap',
+//   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+// });
+
 export default function RootLayout({
   children,
 }: {
@@ -23,7 +30,9 @@ export default function RootLayout({
     <html lang="en">
       <head></head>
       <body className={WorkSans.className}>
-        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        <StyledComponentsRegistry>
+          <Layouts.RootLayout>{children}</Layouts.RootLayout>
+        </StyledComponentsRegistry>
         <Analytics />
       </body>
     </html>

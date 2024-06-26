@@ -10,10 +10,6 @@ export default function Index() {
     <Animated.FadeInFromBelow
       className={clsx('space-y-5', 'md:space-y-10 px-8 mb-[80px]')}
     >
-      <div className=" mt-4">
-        <Navbar />
-      </div>
-
       <Containers.AboutMe />
 
       <div
