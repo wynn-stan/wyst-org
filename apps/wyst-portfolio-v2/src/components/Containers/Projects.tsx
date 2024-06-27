@@ -1,12 +1,13 @@
 'use client';
 
-import { MoveUpRightIcon } from 'lucide-react';
+import { BanIcon, MoveUpRightIcon, Pickaxe, PickaxeIcon } from 'lucide-react';
 import ProjectItemComponent from './Projects/ProjectItem';
 import { ProjectItems } from './Projects/data';
 import Header from './components/Header';
 import clsx from 'clsx';
 import Image from 'next/image';
 import styled from 'styled-components';
+import Link from 'next/link';
 
 export default function Projects() {
   return (
@@ -19,66 +20,79 @@ export default function Projects() {
           'p-5'
         )}
       >
-        {ProjectItems.map((item, index) => (
-          <div
-            className={clsx('shadow-md bg-white', ' w-full rounded-xl')}
-            key={index}
-          >
-            <div
+        {ProjectItems.map((item, index) => {
+          const Element = item?.href ? Link : 'div';
+
+          return (
+            <Element
+              href={item.href}
               className={clsx(
-                'border-b-[1px] border-black-100 rounded-xl',
-                'space-y-3',
-                'p-4 font-medium'
+                'shadow-md bg-white',
+                ' w-full rounded-xl',
+                item?.href ? 'hover:shadow-xl' : ''
               )}
+              key={index}
             >
-              <div className="flex gap-4">
-                <div>
-                  <Image
-                    src={item.logoUrl}
-                    width={120}
-                    height={120}
-                    alt="logo.png"
-                  />
+              <div
+                className={clsx(
+                  'border-b-[1px] border-black-100 rounded-xl',
+                  'space-y-3',
+                  'p-4 font-medium'
+                )}
+              >
+                <div className="flex gap-4">
+                  <div>
+                    <Image
+                      src={item.logoUrl}
+                      width={120}
+                      height={120}
+                      alt="logo.png"
+                    />
+                  </div>
+                  <div className="space-y-3 flex-grow">
+                    {item.stats_right.map((stat, index) => (
+                      <StyledStat key={index}>
+                        <div className="value">{stat.value}</div>
+                        <div className="label">{stat.label}</div>
+                      </StyledStat>
+                    ))}
+                  </div>
                 </div>
-                <div className="space-y-3 flex-grow">
-                  {item.stats_right.map((stat, index) => (
-                    <StyledStat key={index}>
+                <div className="flex gap-3">
+                  {item.stats_bottom.map((stat, index) => (
+                    <StyledStat
+                      className={index > 0 ? 'flex-grow' : 'w-[129px]'}
+                      key={index}
+                    >
                       <div className="value">{stat.value}</div>
                       <div className="label">{stat.label}</div>
                     </StyledStat>
                   ))}
                 </div>
               </div>
-              <div className="flex gap-3">
-                {item.stats_bottom.map((stat, index) => (
-                  <StyledStat
-                    className={index > 0 ? 'flex-grow' : 'w-[129px]'}
-                    key={index}
-                  >
-                    <div className="value">{stat.value}</div>
-                    <div className="label">{stat.label}</div>
-                  </StyledStat>
-                ))}
-              </div>
-            </div>
-            <div className="flex gap-3 items-center justify-between p-3">
-              <div className="space-y-1">
-                <div className="font-medium">{item.name}</div>
-                <div className="text-sm font-medium w-fit text-black-600 bg-black-50 p-2 rounded-full text-center">
-                  {item.industry}
+              <div className="flex gap-3 items-center justify-between p-3">
+                <div className="space-y-1">
+                  <div className="font-medium">{item.name}</div>
+                  <div className="text-sm font-medium w-fit text-black-600 bg-black-50 p-2 rounded-full text-center">
+                    {item.industry}
+                  </div>
+                </div>
+                <div
+                  className={clsx(
+                    'text-black-600 bg-black-50 w-[45px] h-[45px] rounded-full',
+                    'flex justify-center items-center'
+                  )}
+                >
+                  {item.href ? (
+                    <MoveUpRightIcon size={25} />
+                  ) : (
+                    <PickaxeIcon className="text-black-200" size={25} />
+                  )}
                 </div>
               </div>
-              <div
-                className={clsx(
-                  'text-black-600 bg-black-50 w-[45px] h-[45px] rounded-full',
-                  'flex justify-center items-center'
-                )}
-              >
-                <MoveUpRightIcon size={25} />
-              </div>
-            </div>
-          </div>
-        ))}
+            </Element>
+          );
+        })}
       </div>
     </div>
   );

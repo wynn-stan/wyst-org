@@ -24,7 +24,8 @@ export default function AboutMe() {
       <div>
         <Image
           className={clsx(
-            'rounded-xl grayscale hover:grayscale-0',
+            // "grayscale hover:grayscale-0",
+            'rounded-xl ',
             'hidden md:block'
           )}
           src={'/assets/images/profile-hd.png'}

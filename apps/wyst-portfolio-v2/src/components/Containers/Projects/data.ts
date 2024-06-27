@@ -1,3 +1,5 @@
+import routes from '../../../routes';
+
 /**
  * Variables
  */
@@ -6,6 +8,7 @@ export const ProjectItems = [
     name: 'Metric Identity',
     industry: 'Identity verification',
     logoUrl: '/assets/logos/metric-logo-120.png',
+    href: routes.work.metric,
     stats_right: [
       {
         label: 'Organizations',
@@ -31,6 +34,7 @@ export const ProjectItems = [
     name: 'AAG Booking System',
     industry: 'Sports',
     logoUrl: '/assets/logos/aag-logo-120.png',
+    href: '',
     stats_right: [
       {
         label: 'countries served',
@@ -57,6 +61,8 @@ export const ProjectItems = [
     name: 'CitizenApp Jobs',
     industry: 'Education',
     logoUrl: '/assets/logos/citizenappjobs-logo-120.png',
+    href: '',
+
     stats_right: [
       {
         label: 'products',
@@ -82,6 +88,8 @@ export const ProjectItems = [
     name: 'FSM E-commerce shop',
     industry: 'Fashion',
     logoUrl: '/assets/logos/fsm-logo.png',
+    href: '',
+
     stats_right: [
       {
         label: 'products',
