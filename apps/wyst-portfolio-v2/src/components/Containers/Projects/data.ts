@@ -16,7 +16,7 @@ export const ProjectItems = [
       },
       {
         label: 'verifications',
-        value: '1,000,000+',
+        value: '145,000+',
       },
     ],
     stats_bottom: [
