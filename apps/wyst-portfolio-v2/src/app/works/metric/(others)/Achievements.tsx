@@ -22,7 +22,7 @@ export default function Achievements() {
     },
     {
       header: 'Service Performance',
-      value: '1M',
+      value: '145K+',
       description: 'verifications completed',
     },
     {
