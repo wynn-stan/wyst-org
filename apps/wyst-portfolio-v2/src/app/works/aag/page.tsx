@@ -22,16 +22,19 @@ export default function Page() {
     <Animated.FadeInFromBelow
       className={clsx('mx-auto', 'flex flex-col gap-[80px]')}
     >
+      <Intro className="max-w-5xl mx-auto" />
       <div>
-        <Intro className="max-w-5xl mx-auto" />
         <InitialPhase />
         <SecondPhase />
       </div>
-      <div className="max-w-5xl mx-auto space-y-[80px]">
+      <div className="max-w-5xl px-5 mx-auto flex flex-col gap-[80px]">
         <div className="hidden lg:block">
           <PillarsOfSuccess />
         </div>
         <ShowCase />
+      </div>
+      <div className="w-full max-w-5xl mx-auto px-5">
+        <OtherProjects />
       </div>
     </Animated.FadeInFromBelow>
   );
