@@ -38,6 +38,11 @@ export default function Navbar() {
       icon: () => <></>,
       slug: routes.work.metric,
     },
+    aag_project: {
+      label: 'AAG Project',
+      icon: () => <></>,
+      slug: routes.work.aag,
+    },
   };
   return (
     <div

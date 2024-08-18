@@ -11,11 +11,11 @@ export default function FadeInFromBelow({ children, className }: Props) {
   const fadeInFromBelowVariants: Variants = {
     hidden: {
       opacity: 0,
-      y: 0,
+      y: '50px',
     },
     show: {
       opacity: 1,
-      y: 0,
+      y: '0px',
       transition: {
         duration: 0.5,
         type: 'spring',

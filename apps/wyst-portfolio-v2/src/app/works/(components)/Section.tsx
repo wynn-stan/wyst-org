@@ -4,6 +4,7 @@ import { HTMLAttributes } from 'react';
 interface Props extends HTMLAttributes<HTMLDivElement> {
   Icon: React.ReactElement;
   title: string;
+  childrenClassName?: string;
 }
 
 export default function Section({
@@ -11,18 +12,25 @@ export default function Section({
   title,
   children,
   className,
+  childrenClassName,
   ...props
 }: Props) {
   return (
-    <div className="space-y-[32px]" {...props}>
+    <div className={clsx('space-y-[32px]')} {...props}>
       <div className="flex flex-col items-center ">
         {Icon}
-        <div className="text-center font-medium text-3xl tracking-tighter">
+        <header className="text-center font-medium text-3xl tracking-tighter">
           {title}
-        </div>
+        </header>
       </div>
       <div className="w-full bg-black-100 h-[1px]" />
-      <div className={clsx('flex flex-col gap-10', 'md:flex-row')}>
+      <div
+        className={clsx(
+          'flex flex-col gap-10',
+          'md:flex-row',
+          childrenClassName
+        )}
+      >
         {children}
       </div>
     </div>

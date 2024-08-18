@@ -8,7 +8,7 @@ export default function Index() {
 
   return (
     <Animated.FadeInFromBelow
-      className={clsx('space-y-5', 'md:space-y-10 px-8 mb-[80px]')}
+      className={clsx('space-y-5', 'md:space-y-10 px-8')}
     >
       <Containers.AboutMe />
 
