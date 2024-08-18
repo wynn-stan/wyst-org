@@ -7,27 +7,29 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
 }
 
-export default function FadeInFromBelow({ children, className }: Props) {
-  const fadeInFromBelowVariants: Variants = {
-    hidden: {
-      opacity: 0,
-      y: '50px',
-    },
-    show: {
+export default function FadeInFromBelowInView({ children, className }: Props) {
+  /**
+   * Animation Variant
+   */
+  const containerVariants: Variants = {
+    hidden: { opacity: 0, y: '50px' },
+    visible: {
       opacity: 1,
       y: '0px',
       transition: {
         duration: 0.5,
         type: 'spring',
+        delay: 0.2,
       },
     },
   };
 
   return (
     <motion.div
-      variants={fadeInFromBelowVariants}
       initial="hidden"
-      animate="show"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-50px' }}
+      variants={containerVariants}
       className={className}
     >
       {children}

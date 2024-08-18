@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import routes from '../../routes';
-import { CircleUserIcon } from 'lucide-react';
+import { BoltIcon, CircleUserIcon, MedalIcon } from 'lucide-react';
 import clsx from 'clsx';
 import Link from 'next/link';
 
@@ -34,9 +34,14 @@ export default function Navbar() {
       slug: routes.about,
     },
     metric_project: {
-      label: 'Metric Project',
-      icon: () => <></>,
+      label: 'Metric',
+      icon: BoltIcon,
       slug: routes.work.metric,
+    },
+    aag_project: {
+      label: 'AAG',
+      icon: MedalIcon,
+      slug: routes.work.aag,
     },
   };
   return (

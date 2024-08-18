@@ -21,7 +21,7 @@ export default function LinkSection() {
       label: 'Work',
       links: [
         { label: 'Metric Identity', value: routes.work.metric },
-        { label: 'AAG Booking System', value: '' },
+        { label: 'AAG Booking System', value: routes.work.aag },
         { label: 'CitizenApp Jobs', value: '' },
         { label: 'FSM - Ecommerce Shop', value: '' },
       ],

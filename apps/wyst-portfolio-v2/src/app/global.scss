@@ -13,4 +13,10 @@
       scrollbar-width: none; /* Firefox */
     }
   }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
   

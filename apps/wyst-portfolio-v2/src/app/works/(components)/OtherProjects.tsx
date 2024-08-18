@@ -16,19 +16,19 @@ export default function OtherProjects() {
    * Variables
    */
   const projectItems: IProjectItem[] = [
-    // {
-    //   name: 'Metric Identity',
-    //   industry: 'Identity verification',
-    //   logoUrl: '/assets/logos/metric-logo-120.png',
-    //   desc: 'Metric Identity is a SaaS-based facial verification technology that enables organisations to streamline KYC requirements, and prevent fraud in real-time.',
-    //   route: routes.work.metric,
-    // },
+    {
+      name: 'Metric Identity',
+      industry: 'Identity verification',
+      logoUrl: '/assets/logos/metric-logo-120.png',
+      desc: 'Metric Identity is a SaaS-based facial verification technology that enables organisations to streamline KYC requirements, and prevent fraud in real-time.',
+      route: routes.work.metric,
+    },
     {
       name: 'AAG Booking System',
       industry: 'Sports',
       logoUrl: '/assets/logos/aag-logo-120.png',
-      desc: 'Coming soon...',
-      route: '',
+      desc: 'The All African Games are a multi-sport event held every four years, organized by the AU in collaboration with the ANOCA and the Association of African Sports Confederations. The 2023 edition of the Games was hosted by Ghana in 2024.',
+      route: routes.work.aag,
     },
 
     {

@@ -34,7 +34,7 @@ export const ProjectItems = [
     name: 'AAG Booking System',
     industry: 'Sports',
     logoUrl: '/assets/logos/aag-logo-120.png',
-    href: '',
+    href: routes.work.aag,
     stats_right: [
       {
         label: 'countries served',

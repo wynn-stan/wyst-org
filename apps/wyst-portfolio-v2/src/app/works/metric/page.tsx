@@ -10,6 +10,10 @@ import Showcase from './(others)/Showcase';
 import OtherProjects from '../(components)/OtherProjects';
 
 export default function Page() {
+  /**
+   * Variables
+   */
+  const sections = [Role, Achievements, Showcase, OtherProjects];
   return (
     <Animated.FadeInFromBelow className="space-y-10">
       <div className="flex justify-center">
@@ -24,10 +28,11 @@ export default function Page() {
       >
         <Intro />
         <Description />
-        <Role />
-        <Achievements />
-        <Showcase />
-        <OtherProjects />
+        {sections.map((Section, index) => (
+          <Animated.FadeInFromBelowInView key={index}>
+            <Section />
+          </Animated.FadeInFromBelowInView>
+        ))}
       </div>
     </Animated.FadeInFromBelow>
   );
