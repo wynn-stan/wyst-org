@@ -47,9 +47,9 @@ export default function Contact() {
             <div>Email</div>
           </ContactItem>
         </div>
-        <ContactItem href="#">
+        <ContactItem href="https://drive.google.com/file/d/1_cRmAl3xuZ4xMUqp3k6Och1KoRvKxu3S/view?usp=sharing">
           <ScrollTextIcon size={24} />
-          <div>Resume (coming soon...)</div>
+          <div>Resume</div>
         </ContactItem>
       </div>
     </div>
@@ -72,6 +72,7 @@ function ContactItem({
 
   return (
     <StyledLink
+      target="_blank"
       href={href}
       className={clsx(
         'hover:bg-black-950 hover:text-white',
