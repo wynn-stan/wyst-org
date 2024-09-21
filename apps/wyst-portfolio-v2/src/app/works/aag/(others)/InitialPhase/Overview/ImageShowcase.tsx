@@ -71,20 +71,8 @@ export default function ImageShowcase() {
           delay: 1.5,
         }}
         onAnimationComplete={() => {
-          console.log(
-            'animation has ended. ImageIsLoad & Section:',
-            imageIsLoaded,
-            section
-          );
           handleAnimationComplete();
         }}
-        onAnimationStart={() =>
-          console.log(
-            'animation has started again. ImageIsLoad & Section:',
-            imageIsLoaded,
-            section
-          )
-        }
       >
         <Image
           key={currentImage}
@@ -94,7 +82,6 @@ export default function ImageShowcase() {
           width={600}
           height={300}
           onLoad={() => {
-            console.log('\n setting image is loaded to true \n');
             setImageIsLoaded(true);
           }}
         />

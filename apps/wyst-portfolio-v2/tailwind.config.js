@@ -33,8 +33,54 @@ module.exports = {
           900: '#3d3d3d',
           950: '#000000',
         },
+        blue: {
+          5: '#EBF3FF',
+          80: '#2460BA',
+        },
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addBase, theme }) {
+      function hexToRgb(hex) {
+        const value = hex.charAt(0) === '#' ? hex.substring(1, 7) : hex;
+
+        return [
+          parseInt(value.substring(0, 2), 16),
+          parseInt(value.substring(2, 4), 16),
+          parseInt(value.substring(4, 6), 16),
+        ].join(',');
+      }
+
+      function extractColorsToVars(colorObj, colorGroup = '') {
+        return Object.keys(colorObj).reduce(
+          (total_hex_and_rgb_variables, current_color_key) => {
+            const value = colorObj[current_color_key];
+            const cssVariable =
+              current_color_key === 'DEFAULT'
+                ? `--color${colorGroup}`
+                : `--color${colorGroup}-${current_color_key}`;
+
+            const new_hex_and_rgb_variables =
+              typeof value === 'string'
+                ? {
+                    [cssVariable]: value,
+                    [`${cssVariable}-rgb`]: hexToRgb(value),
+                  }
+                : extractColorsToVars(value, `-${current_color_key}`);
+
+            return {
+              ...total_hex_and_rgb_variables,
+              ...new_hex_and_rgb_variables,
+            };
+          },
+          {}
+        );
+      }
+
+      addBase({
+        ':root': extractColorsToVars(theme('colors')),
+      });
+    },
+  ],
 };
