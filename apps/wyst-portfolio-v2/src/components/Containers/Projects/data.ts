@@ -56,6 +56,33 @@ export const ProjectItems = [
       },
     ],
   },
+  {
+    name: 'FSM E-commerce shop',
+    industry: 'Fashion',
+    logoUrl: '/assets/logos/fsm-logo.png',
+    href: routes.work.fsm,
+
+    stats_right: [
+      {
+        label: 'products',
+        value: '2',
+      },
+      {
+        label: 'features',
+        value: '20+',
+      },
+    ],
+    stats_bottom: [
+      {
+        label: 'browser support',
+        value: '8+',
+      },
+      {
+        label: 'platform uptime',
+        value: '100%',
+      },
+    ],
+  },
 
   {
     name: 'CitizenApp Jobs',
@@ -71,33 +98,6 @@ export const ProjectItems = [
       {
         label: 'features',
         value: '78+',
-      },
-    ],
-    stats_bottom: [
-      {
-        label: 'browser support',
-        value: '8+',
-      },
-      {
-        label: 'platform uptime',
-        value: '100%',
-      },
-    ],
-  },
-  {
-    name: 'FSM E-commerce shop',
-    industry: 'Fashion',
-    logoUrl: '/assets/logos/fsm-logo.png',
-    href: '',
-
-    stats_right: [
-      {
-        label: 'products',
-        value: '2',
-      },
-      {
-        label: 'features',
-        value: '20+',
       },
     ],
     stats_bottom: [

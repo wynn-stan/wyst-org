@@ -16,8 +16,8 @@ export default function Section({
   ...props
 }: Props) {
   return (
-    <div className={clsx('space-y-[32px]')} {...props}>
-      <div className="flex flex-col items-center ">
+    <div className={clsx('space-y-[32px]', className)} {...props}>
+      <div className="flex flex-col gap-2 items-center ">
         {Icon}
         <header className="text-center font-medium text-3xl tracking-tighter">
           {title}
