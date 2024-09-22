@@ -47,7 +47,7 @@ export default function Contact() {
             <div>Email</div>
           </ContactItem>
         </div>
-        <ContactItem href="https://drive.google.com/file/d/1H1N131Z7ly26-o2tOR8KpB9FoL3QLUTA/view?usp=sharing">
+        <ContactItem href={process?.env?.['NX_RESUME_URL'] || ''}>
           <ScrollTextIcon size={24} />
           <div>Resume</div>
         </ContactItem>

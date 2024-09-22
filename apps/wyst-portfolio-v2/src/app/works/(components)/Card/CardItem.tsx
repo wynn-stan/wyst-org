@@ -8,6 +8,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   description: string;
   simplifyOnSm?: boolean;
   Icon?: React.ReactNode;
+  headerClassName?: string;
 }
 
 export default function CardItem({
@@ -15,6 +16,7 @@ export default function CardItem({
   header,
   className,
   simplifyOnSm,
+  headerClassName,
   Icon,
   ...props
 }: Props) {
@@ -23,8 +25,8 @@ export default function CardItem({
       className={clsx('p-6 space-y-5 rounded-lg', 'bg-white', className)}
       {...props}
     >
-      <div className={clsx('space-y-4 w-full', 'md:w-fit')}>
-        <div className="flex gap-2 items-center">
+      <div className={clsx('space-y-4 w-full', 'md:w-fit', headerClassName)}>
+        <div className="flex gap-2 items-center justify-center">
           {Icon}
           <h2 className="text-2xl font-medium">{header}</h2>
         </div>

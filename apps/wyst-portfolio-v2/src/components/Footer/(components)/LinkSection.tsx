@@ -14,7 +14,7 @@ export default function LinkSection() {
       label: 'About',
       links: [
         { label: 'Who I am', value: routes.about },
-        { label: 'My Resume', value: '' },
+        { label: 'My Resume', value: process?.env?.['NX_RESUME_URL'] || '' },
       ],
     },
     {
@@ -59,6 +59,7 @@ export default function LinkSection() {
                     ' block w-full',
                     link.value ? 'hover:border-b hover:border-black-200' : ''
                   )}
+                  target={link.value.includes('http') ? '_blank' : undefined}
                   href={link.value}
                 >
                   <div

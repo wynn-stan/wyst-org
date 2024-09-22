@@ -30,6 +30,13 @@ export default function OtherProjects() {
       desc: 'The All African Games are a multi-sport event held every four years, organized by the AU in collaboration with the ANOCA and the Association of African Sports Confederations. The 2023 edition of the Games was hosted by Ghana in 2024.',
       route: routes.work.aag,
     },
+    {
+      name: 'FSM E-commerce shop',
+      industry: 'Fashion',
+      logoUrl: '/assets/logos/fsm-logo.png',
+      desc: "The project involved the design and development of an ecommerce platform for a fashion business specializing in men's footwear and related products",
+      route: routes.work.fsm,
+    },
 
     {
       name: 'CitizenApp Jobs',
@@ -38,17 +45,14 @@ export default function OtherProjects() {
       desc: 'Coming soon...',
       route: '',
     },
-    {
-      name: 'FSM E-commerce shop',
-      industry: 'Fashion',
-      logoUrl: '/assets/logos/fsm-logo.png',
-      desc: 'Coming soon...',
-      route: '',
-    },
   ];
 
   return (
-    <Section Icon={<BoltIcon />} title="Other Projects">
+    <Section
+      Icon={<BoltIcon />}
+      title="Other Projects"
+      childrenClassName="w-full"
+    >
       <div className="flex gap-5 overflow-auto no-scrollbar">
         {projectItems.map((item, key) => (
           <ProjectItem key={key} {...item} />
