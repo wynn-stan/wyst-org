@@ -28,7 +28,7 @@ export default function AboutMe() {
             'rounded-xl ',
             'hidden md:block'
           )}
-          src={'/assets/images/profile-hd.png'}
+          src={'/assets/images/my-2.jpg'}
           alt="profile.png"
           width={205}
           height={370}
