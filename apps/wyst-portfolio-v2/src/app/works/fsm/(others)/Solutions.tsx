@@ -36,7 +36,9 @@ export default function Solutions() {
         <div className="hidden md:block">
           <Sidebar {...{ activeSection, setActiveSection }} />
         </div>
-        <div className="flex flex-col justify-between gap-8">
+        <div
+          className={clsx('flex flex-col justify-between gap-8', 'h-[700px]')}
+        >
           <Content {...activeSection} />
           <Indicator {...{ activeSection, setActiveSection }} />
         </div>
