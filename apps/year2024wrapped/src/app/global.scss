@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "../styles/app.scss";
+
+@layer utilities {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: var(--font-inter);
+  }
+  
+@layer gradients {
+
+  :root {
+    --yellow-400: #FAB12F;
+  --orange-400: #FA812F;
+  --peach-600: #C7253E;
+  }
+
+  .top-container-gradient {
+    background: linear-gradient(180deg, #FFFFFF 5%, var(--yellow-400) 79%);
+
+  }
+
+  .mid-container-gradient {
+    background: linear-gradient(180deg, var(--yellow-400) 0%, var(--orange-400)  68.5%);
+  }
+
+  .bottom-container-gradient {
+    background: linear-gradient(180deg, var(--orange-400) 0%, var(--peach-600) 85%);
+  }
+
+}
+
+@layer layouts {
+  .section-container {
+    max-width: 1280px;
+    margin: auto;
+  }
+  .section-heading {
+    @apply text-center flex flex-col gap-5 ;
+
+    &__header {
+
+      @apply [font-size:36px] md:[font-size:48px] text-white font-bold tracking-tight;
+    }
+
+    &__desc {
+      @apply [font-size:14px] md:[font-size:18px] text-gray-25;
+    }
+  }
+}

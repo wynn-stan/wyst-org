@@ -1,0 +1,9 @@
+{
+  "name": "year2024wrapped-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/year2024wrapped-e2e/src",
+  "tags": [],
+  "implicitDependencies": ["year2024wrapped"],
+  "// targets": "to see all targets run: nx show project year2024wrapped-e2e --web",
+  "targets": {}
+}

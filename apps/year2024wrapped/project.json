@@ -1,0 +1,51 @@
+{
+  "name": "year2024wrapped",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/year2024wrapped",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/year2024wrapped/"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "apps/year2024wrapped"
+        },
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "year2024wrapped:build",
+        "dev": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "year2024wrapped:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "year2024wrapped:build:production",
+          "dev": false
+        }
+      }
+    },
+    "export": {
+      "executor": "@nx/next:export",
+      "options": {
+        "buildTarget": "year2024wrapped:build:production"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    }
+  }
+}
