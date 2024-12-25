@@ -52,7 +52,7 @@ module.exports = {
     },
   },
   plugins: [
-    require('@tailwindcss/line-clamp'),
+    // require('@tailwindcss/line-clamp'),
     function ({ addBase, theme }) {
       function hexToRgb(hex) {
         const value = hex.charAt(0) === '#' ? hex.substring(1, 7) : hex;

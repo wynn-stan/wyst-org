@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 
+import { EventsModel } from '../../../../../models';
 import { useEvents } from '../../../../../hooks';
 import Details from '../others/Details/Details';
 import Card from '../others/Card/Card';
-import { EventsModel } from 'apps/year2024wrapped/src/models';
 
 export default function Events() {
   /**
@@ -15,9 +15,16 @@ export default function Events() {
   /**
    * State
    */
-  const [activeEvent, setActiveEvent] = useState<EventsModel | undefined>(
-    eventItems?.[0]
-  );
+  const [activeEvent, setActiveEvent] = useState<EventsModel | undefined>();
+
+  /**
+   * Effect
+   */
+  useEffect(() => {
+    if (eventItems?.length) {
+      setActiveEvent(eventItems?.[0]);
+    }
+  }, [eventItems]);
 
   return (
     <div className={clsx('top-container-gradient')}>
@@ -45,7 +52,7 @@ export default function Events() {
           </p>
         </div>
         {/* Body */}
-        <div className="flex gap-5">
+        <div className="flex flex-col lg:flex-row gap-5">
           {activeEvent && (
             <Details
               containerClassName="shadow-[0px_6px_5px_#E89A16]"
@@ -62,10 +69,13 @@ export default function Events() {
               }}
             />
           )}
+
           <div
             className={clsx(
-              'hidden md:block w-full max-w-[432px] h-[700px]',
-              'overflow-y-auto space-y-5'
+              'hidden md:flex flex-row lg:flex-col gap-5',
+              'w-full lg:max-w-[432px]',
+              'overflow-auto no-scrollbar',
+              'relative'
             )}
           >
             {eventItems?.map((item, index) => {
@@ -82,6 +92,15 @@ export default function Events() {
                 />
               );
             })}
+
+            {/* <div
+              style={{
+                background:
+                  'linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));',
+                backdropFilter: 'blur(1px)',
+              }}
+              className={clsx('absolute left-0 right-0 bottom-0 h-10')}
+            ></div> */}
           </div>
         </div>
       </div>

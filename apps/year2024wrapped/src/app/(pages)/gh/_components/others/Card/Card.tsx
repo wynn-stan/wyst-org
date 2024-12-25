@@ -23,7 +23,12 @@ export default function Card({
   return (
     <div
       role="button"
-      className={clsx('p-4', 'bg-white rounded-lg', 'flex items-center gap-3')}
+      className={clsx(
+        'p-4',
+        'bg-white rounded-lg',
+        'flex items-center gap-3',
+        'md:min-w-[328px] xl:min-w-fit h-fit'
+      )}
       onClick={onClick}
     >
       {/* State */}
@@ -51,11 +56,11 @@ export default function Card({
 
         {/* Text */}
         <div className="space-y-1">
-          <small className="font-medium">{name}</small>
-          <small className="smaller line-clamp-1 text-gray">
+          <small className="font-medium !line-clamp-1">{name}</small>
+          <small className="smaller !line-clamp-1 text-gray">
             {description}
           </small>
-          <small className="smaller line-clamp-1 text-gray">
+          <small className="smaller !line-clamp-1 text-gray">
             {tags.map((tag, index) =>
               index + 1 === tags.length ? `${tag}` : `${tag} | `
             )}
