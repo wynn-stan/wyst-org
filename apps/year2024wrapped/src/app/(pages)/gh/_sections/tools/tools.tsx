@@ -7,6 +7,7 @@ import * as ToolsLayout from './_components/index';
 import { Spinner } from '@phosphor-icons/react';
 import { Animated } from '../../../../../components';
 import { useWindowWidth } from '@react-hook/window-size';
+import Link from 'next/link';
 
 export default function Tools() {
   /**
@@ -93,6 +94,13 @@ export default function Tools() {
       />
 
       <small className="w-full p-4 text-gray-300 text-center">
+        <Link
+          target="_blank"
+          href={`${process?.env?.NEXT_PUBLIC_PORTFOLIO_SITE || ''}`}
+          className="underline"
+        >
+          wyst-org
+        </Link>{' '}
         &copy; Copyright 2024
       </small>
     </div>
