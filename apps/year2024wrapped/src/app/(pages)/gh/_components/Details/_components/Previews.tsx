@@ -1,6 +1,7 @@
 import Image from 'next/image';
 
 import { LinkPreview } from '../../../../../../components';
+import clsx from 'clsx';
 
 export default function Previews({
   preview_photos,
@@ -10,7 +11,7 @@ export default function Previews({
   preview_urls?: string[];
 }) {
   return (
-    <div className="flex gap-4 overflow-y-auto no-scrollbar p-1">
+    <div className={clsx('flex gap-4 overflow-y-auto no-scrollbar p-1')}>
       {preview_photos?.map((url, index) => (
         <Image
           key={index}

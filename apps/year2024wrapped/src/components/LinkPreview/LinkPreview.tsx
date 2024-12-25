@@ -51,40 +51,38 @@ export default function LinkPreview({ url }: { url: string }) {
       )}
 
       {!isLoading && previewData && (
-        <div className="w-200 h-200">
-          {/* <Link
-            target="_blank"
-            href={url}
-            className={clsx(
-              'rounded-lg overflow-hidden shadow-md bg-white',
-              'w-[110px]'
-            )}
-          >
-            <Image
-              key={previewData.image}
-              width={100}
-              height={100}
-              className="max-w-[200px] w-full object-cover aspect-[3/2]"
-              src={
-                previewData.image ||
-                `https://placehold.co/100x100?text=${previewData.title}`
-              }
-              alt="cover"
-              unoptimized
-            />
-            <div className="p-1">
-              <small className="smaller !line-clamp-1 font-semibold">
-                {previewData.title || '--'}
-              </small>
-              <small className="smaller text-gray !line-clamp-1">
-                {previewData.description || '--'}
-              </small>
-              <small className="smaller text-gray !line-clamp-1">
-                {previewData.site_name || '--'}
-              </small>
-            </div>
-          </Link> */}
-        </div>
+        <Link
+          target="_blank"
+          href={url}
+          className={clsx(
+            'rounded-lg overflow-hidden shadow-md bg-white',
+            'basis-[110px] shrink-0'
+          )}
+        >
+          <Image
+            key={previewData.image}
+            width={100}
+            height={100}
+            className="max-w-[200px] w-full object-cover aspect-[3/2]"
+            src={
+              previewData.image ||
+              `https://placehold.co/100x100?text=${previewData.title}`
+            }
+            alt="cover"
+            unoptimized
+          />
+          <div className="p-1">
+            <small className="smaller !line-clamp-1 font-semibold">
+              {previewData.title || '--'}
+            </small>
+            <small className="smaller text-gray !line-clamp-1">
+              {previewData.description || '--'}
+            </small>
+            <small className="smaller text-gray !line-clamp-1">
+              {previewData.site_name || '--'}
+            </small>
+          </div>
+        </Link>
       )}
     </>
   );
