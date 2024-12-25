@@ -1,17 +1,17 @@
 import clsx from 'clsx';
 import Image from 'next/image';
+import { HTMLAttributes } from 'react';
 
-interface Props {
+interface Props extends HTMLAttributes<HTMLDivElement> {
   name: string;
   description: string;
   profile_photo: string;
   tags: string[];
   isActive?: boolean;
   showStatus?: boolean;
-  onClick?: () => void;
 }
 
-export default function Card({
+export function CardListItem({
   description,
   name,
   tags,
@@ -19,6 +19,8 @@ export default function Card({
   showStatus = true,
   profile_photo,
   onClick,
+  className,
+  ...props
 }: Props) {
   return (
     <div
@@ -27,7 +29,8 @@ export default function Card({
         'p-4',
         'bg-white rounded-lg',
         'grid grid-cols-[auto_1fr] items-center gap-3',
-        'md:min-w-[328px] xl:min-w-fit h-fit'
+        'md:min-w-[328px] xl:min-w-fit h-fit',
+        className
       )}
       onClick={onClick}
     >
@@ -61,9 +64,7 @@ export default function Card({
             {description}
           </small>
           <small className="smaller !line-clamp-1 text-gray">
-            {tags.map((tag, index) =>
-              index + 1 === tags.length ? `${tag}` : `${tag} | `
-            )}
+            {tags.join(' | ')}
           </small>
         </div>
       </div>

@@ -21,7 +21,6 @@ export default function LinkPreview({ url }: { url: string }) {
   const [previewData, setPreviewData] = useState<PreviewDataInterface | null>(
     null
   );
-  const [loading, setLoading] = useState(true);
 
   const { data, isLoading, error } = useSWR<{
     metadata: PreviewMetadataInterface;
@@ -30,27 +29,26 @@ export default function LinkPreview({ url }: { url: string }) {
       url,
     })}`
   );
+
   /**
    * Effect
    */
   useEffect(() => {
-    if (data) {
+    if (data && !(data as any)?.status) {
       const metadata = data.metadata;
       setPreviewData({
         title: metadata?.title || '',
         description: metadata?.description || '',
-        image: metadata['og:image'],
-        site_name: metadata['og:site_name'],
+        image: metadata?.['og:image'] || '',
+        site_name: metadata?.['og:site_name'] || '',
       });
-      setLoading(false);
     }
-  }, [data]);
+  }, [data, error]);
   return (
     <>
       {isLoading && (
         <div className="rounded-md shadow-sm bg-gray-200 w-[200px] h-[195px] animate-pulse"></div>
       )}
-      {error && <p>Failed to fetch preview</p>}
 
       {!isLoading && previewData && (
         <Link

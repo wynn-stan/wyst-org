@@ -1,89 +1,20 @@
 import clsx from 'clsx';
 import Image from 'next/image';
-import React, { HTMLAttributes } from 'react';
 
-function DefaultContainer({
-  children,
-  className,
-  shadowColor = 'black',
-  ...props
-}: HTMLAttributes<HTMLDivElement> & {
-  shadowColor?: 'yellow' | 'orange' | 'peach' | 'black';
-}) {
-  return (
-    <div className={clsx('bg-white p-4 md:p-6 rounded-xl', 'shadow-md')}>
-      <div
-        className={clsx(
-          'overflow-y-auto no-scrollbar',
-          'max-h-[800px] h-full '
-        )}
-      >
-        <div>{children}</div>
-      </div>
-    </div>
-  );
-}
-
-function StackedContainer({
-  children,
-  className,
-  shadowColor = 'black',
-  ...props
-}: HTMLAttributes<HTMLDivElement> & {
-  shadowColor?: 'yellow' | 'orange' | 'peach' | 'black';
-}) {
-  const shadow = (() => '')();
-
-  return (
-    <div className={clsx('relative')}>
-      <div
-        className={clsx(
-          'bg-white p-4 md:p-6 rounded-xl',
-          'relative z-30 shadow-md'
-        )}
-      >
-        <div
-          className={clsx(
-            'max-h-[376px] md:max-h-[600px] overflow-y-auto no-scrollbar'
-          )}
-        >
-          <div>{children}</div>
-        </div>
-      </div>
-      <div
-        className={clsx(
-          'z-20 absolute left-[14px] right-[14px] bottom-[-12px] h-[100px]',
-          'bg-white rounded-xl shadow-md'
-        )}
-      />
-      <div
-        className={clsx(
-          'z-10 absolute left-[30px] right-[30px] bottom-[-20px] h-[100px]',
-          'bg-white rounded-xl shadow-sm'
-        )}
-      />
-    </div>
-  );
-}
-
-function DefaultListItem({
-  cover_photo,
+function WithoutCover({
   profile_photo,
   tags,
-  description,
-  twitter_handle,
   showSeperator = false,
   name,
   onClick,
 }: {
   name: string;
   profile_photo: string;
-  cover_photo: string;
-  twitter_handle?: string;
   tags: string;
-  description?: string;
   showSeperator?: boolean;
   onClick?: () => any;
+  cover_photo?: string;
+  description?: string;
 }) {
   return (
     <>
@@ -112,7 +43,7 @@ function DefaultListItem({
   );
 }
 
-function CardListItem({
+function WithCover({
   cover_photo,
   profile_photo,
   tags,
@@ -177,7 +108,4 @@ function CardListItem({
   );
 }
 
-export default Object.assign(
-  {},
-  { StackedContainer, DefaultContainer, CardListItem, DefaultListItem }
-);
+export default Object.assign({}, { WithCover, WithoutCover });

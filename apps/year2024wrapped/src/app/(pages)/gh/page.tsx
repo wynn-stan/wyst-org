@@ -1,6 +1,6 @@
 'use client';
 
-import { Events, Persons, Tools } from './_components';
+import { Events, Persons, Tools } from './_sections';
 
 export default function Page() {
   return (
