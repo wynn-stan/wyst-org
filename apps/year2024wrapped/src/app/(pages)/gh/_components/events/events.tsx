@@ -55,7 +55,9 @@ export default function Events() {
           </p>
         </div>
         {/* Body - Md and Above */}
-        <div className="hidden md:flex flex-col-reverse lg:flex-row gap-5">
+        <div
+          className={clsx('hidden md:flex flex-col-reverse lg:flex-row gap-5')}
+        >
           {activeEvent && (
             <Details
               containerClassName="shadow-[0px_6px_5px_#E89A16]"
@@ -78,7 +80,8 @@ export default function Events() {
               'hidden md:flex flex-row lg:flex-col gap-5',
               'w-full lg:max-w-[432px]',
               'overflow-auto no-scrollbar',
-              'relative'
+              'relative',
+              'max-h-[800px] h-full'
             )}
           >
             {eventItems?.map((item, index) => {
@@ -111,7 +114,7 @@ export default function Events() {
           <Stacked.StackedContainer shadowColor="yellow">
             <div className="space-y-3">
               {eventItems?.map((event, index) => (
-                <Stacked.ListItem
+                <Stacked.CardListItem
                   onClick={() => {
                     setShowDetailsModal(true);
                     setActiveEvent(event);

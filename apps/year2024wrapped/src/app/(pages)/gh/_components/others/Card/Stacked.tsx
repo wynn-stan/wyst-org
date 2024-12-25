@@ -11,15 +11,11 @@ function DefaultContainer({
   shadowColor?: 'yellow' | 'orange' | 'peach' | 'black';
 }) {
   return (
-    <div
-      className={clsx(
-        'bg-white p-4 md:p-6 rounded-xl',
-        'relative z-30 shadow-md'
-      )}
-    >
+    <div className={clsx('bg-white p-4 md:p-6 rounded-xl', 'shadow-md')}>
       <div
         className={clsx(
-          'max-h-[376px] md:max-h-[600px] overflow-y-auto no-scrollbar'
+          'overflow-y-auto no-scrollbar',
+          'max-h-[800px] h-full '
         )}
       >
         <div>{children}</div>
@@ -70,7 +66,53 @@ function StackedContainer({
   );
 }
 
-function ListItem({
+function DefaultListItem({
+  cover_photo,
+  profile_photo,
+  tags,
+  description,
+  twitter_handle,
+  showSeperator = false,
+  name,
+  onClick,
+}: {
+  name: string;
+  profile_photo: string;
+  cover_photo: string;
+  twitter_handle?: string;
+  tags: string;
+  description?: string;
+  showSeperator?: boolean;
+  onClick?: () => any;
+}) {
+  return (
+    <>
+      <div onClick={onClick} role="button">
+        <div className="grid grid-cols-[auto_1fr] gap-2 md:gap-4">
+          <div>
+            <Image
+              width={72}
+              height={72}
+              alt="profile"
+              src={profile_photo}
+              className={clsx('w-10 h-10 rounded-full object-cover')}
+            />
+          </div>
+
+          <div className="space-y-1">
+            <small className="font-medium !line-clamp-1">{name}</small>
+
+            <small className="text-gray smaller !line-clamp-1">{tags}</small>
+          </div>
+        </div>
+      </div>
+
+      {showSeperator && <div className="w-full bg-gray-100 h-[2px]" />}
+    </>
+  );
+}
+
+function CardListItem({
   cover_photo,
   profile_photo,
   tags,
@@ -137,5 +179,5 @@ function ListItem({
 
 export default Object.assign(
   {},
-  { StackedContainer, DefaultContainer, ListItem }
+  { StackedContainer, DefaultContainer, CardListItem, DefaultListItem }
 );

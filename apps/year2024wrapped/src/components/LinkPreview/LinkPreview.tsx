@@ -21,24 +21,26 @@ export default function LinkPreview({ url }: { url: string }) {
    * Effect
    */
   useEffect(() => {
-    axios
-      .get(url)
+    fetch(url)
       .then((response) => {
-        const data = response.data;
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(data, 'text/html');
-        const title = document.querySelector('title')?.textContent || '';
-        const description =
-          document
-            .querySelector("meta[name='description']")
-            ?.getAttribute('content') || '';
-        const image =
-          document
-            .querySelector("meta[property='og:image']")
-            ?.getAttribute('content') || '';
+        response.text().then((data) => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(data, 'text/html');
+          const title = document.querySelector('title')?.textContent || '';
+          const description =
+            document
+              .querySelector("meta[name='description']")
+              ?.getAttribute('content') || '';
+          const image =
+            document
+              .querySelector("meta[property='og:image']")
+              ?.getAttribute('content') || '';
 
-        setPreviewData({ title, description, image });
-        setLoading(false);
+          console.log({ data, title, description, image });
+          setPreviewData({ title, description, image });
+
+          setLoading(false);
+        });
       })
       .catch((err) => {
         console.log(err);

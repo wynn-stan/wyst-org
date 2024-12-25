@@ -57,7 +57,7 @@ export default function Persons() {
         <LinkPreview url={activePerson?.preview_links?.[0] || ''} />
 
         {/* Body - Md and Above */}
-        <div className="hidden md:flex flex-col-reverse lg:flex-row gap-5">
+        <div className="hidden lg:flex gap-5">
           {activePerson && (
             <Details
               containerClassName="shadow-[0px_6px_5px_#E89A16]"
@@ -73,7 +73,26 @@ export default function Persons() {
             />
           )}
 
-          <div
+          <Stacked.DefaultContainer>
+            <div className="space-y-3">
+              {personItems?.map((person, index) => (
+                <Stacked.DefaultListItem
+                  onClick={() => {
+                    setActivePerson(person);
+                  }}
+                  key={index}
+                  tags={person.tags.join(' | ')}
+                  showSeperator={index + 1 !== personItems.length}
+                  cover_photo={person.cover_photo}
+                  name={person.name}
+                  profile_photo={person.profile_photo}
+                  description={person.description}
+                />
+              ))}
+            </div>
+          </Stacked.DefaultContainer>
+
+          {/* <div
             className={clsx(
               'hidden md:flex flex-row lg:flex-col gap-5',
               'w-full lg:max-w-[432px]',
@@ -96,22 +115,22 @@ export default function Persons() {
               );
             })}
 
-            {/* <div
+           <div
               style={{
                 background:
                   'linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));',
                 backdropFilter: 'blur(1px)',
               }}
               className={clsx('absolute left-0 right-0 bottom-0 h-10')}
-            ></div> */}
-          </div>
+            ></div> 
+          </div> */}
         </div>
 
-        <div className="md:hidden">
-          <Stacked.DefaultContainer shadowColor="yellow">
+        <div className="lg:hidden">
+          <Stacked.StackedContainer shadowColor="yellow">
             <div className="space-y-3">
               {personItems?.map((person, index) => (
-                <Stacked.ListItem
+                <Stacked.CardListItem
                   onClick={() => {
                     setShowDetailsModal(true);
                     setActivePerson(person);
@@ -126,7 +145,7 @@ export default function Persons() {
                 />
               ))}
             </div>
-          </Stacked.DefaultContainer>
+          </Stacked.StackedContainer>
         </div>
       </div>
 

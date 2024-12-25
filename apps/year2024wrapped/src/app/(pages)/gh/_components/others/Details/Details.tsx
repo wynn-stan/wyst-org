@@ -64,7 +64,7 @@ export default function Details({ details, containerClassName }: Props) {
       )}
     >
       <CoverAndProfile {...{ cover_photo, profile_photo }} />
-      <div className="space-y-4">
+      <div className="flex flex-col gap-4">
         <BodyText {...{ date, description, location, name, socials }} />
 
         <Previews {...{ preview_photos }} />
@@ -184,7 +184,7 @@ function Footer({
   socials?: SocialsInterface;
 }) {
   return (
-    <div className="space-y-4">
+    <div className="flex-grow flex flex-col gap-4 justify-between">
       <div className="flex gap-4 text-gray-500">
         {socials?.linkedin && (
           <Link target="_blank" href={socials.linkedin}>
