@@ -106,14 +106,13 @@ export function Modal({
       renderBackdrop={(backdropProps) => (
         <motion.div
           {...backdropProps}
-          initial="hidden"
           style={{ zIndex }}
-          variants={backdropVariants}
-          animate={show ? 'visible' : 'hidden'}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: show ? 0.99 : 0 }}
           className={clsx(
             'w-full h-full',
             `fixed top-0 left-0`,
-            'bg-black opacity-25'
+            'bg-black/50 inset-0 backdrop-blur-md'
           )}
         />
       )}
@@ -134,7 +133,7 @@ export function Modal({
         )}
       >
         <div
-          className="space-y-3 w-full"
+          className="space-y-3"
           //   className={helpers.classNames(
           //     'w-full rounded-lg mx-4 my-auto',
           //     'shadow-3xl bg-white relative'

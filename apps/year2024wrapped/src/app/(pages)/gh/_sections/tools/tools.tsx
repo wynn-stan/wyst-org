@@ -5,12 +5,15 @@ import { useTools } from '../../../../../hooks';
 import { ToolsModel } from '../../../../../models';
 import * as ToolsLayout from './_components/index';
 import { Spinner } from '@phosphor-icons/react';
+import { Animated } from '../../../../../components';
+import { useWindowWidth } from '@react-hook/window-size';
 
 export default function Tools() {
   /**
    * Hooks
    */
   const { toolsItems, isLoading } = useTools();
+  const isTablet = useWindowWidth() < 1024;
 
   /**
    * State
@@ -36,7 +39,7 @@ export default function Tools() {
       )}
 
       {!isLoading && (
-        <>
+        <Animated.FadeInFromBelowInView>
           <div
             className={clsx(
               'section-container',
@@ -50,7 +53,10 @@ export default function Tools() {
               <ToolsLayout.Header />
 
               <ToolsLayout.DefaultList
-                onSelect={(tool) => setActiveTool(tool)}
+                onSelect={(tool) => {
+                  setActiveTool(tool);
+                  isTablet && setShowDetailsModal(true);
+                }}
                 activeTool={activeTool}
               />
             </div>
@@ -76,7 +82,7 @@ export default function Tools() {
               }}
             />
           </div>
-        </>
+        </Animated.FadeInFromBelowInView>
       )}
 
       {/* Modal */}

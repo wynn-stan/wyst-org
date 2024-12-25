@@ -5,6 +5,7 @@ import { PersonsModel } from '../../../../../models';
 import { usePersons } from '../../../../../hooks';
 import * as PersonsLayout from './_components/index';
 import { Spinner } from '@phosphor-icons/react';
+import { Animated } from '../../../../../components';
 
 export default function Persons() {
   /**
@@ -46,7 +47,7 @@ export default function Persons() {
         )}
 
         {!isLoading && (
-          <>
+          <Animated.FadeInFromBelowInView>
             {/* Body - Md and Above */}
             <div className="hidden lg:grid grid-cols-[1.5fr_1fr] gap-5">
               <PersonsLayout.DetailedView activePerson={activePerson} />
@@ -67,7 +68,7 @@ export default function Persons() {
                 }}
               />
             </div>
-          </>
+          </Animated.FadeInFromBelowInView>
         )}
       </div>
 

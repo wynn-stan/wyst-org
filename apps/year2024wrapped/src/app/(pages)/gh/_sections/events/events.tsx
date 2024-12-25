@@ -3,7 +3,7 @@ import clsx from 'clsx';
 
 import { EventsModel } from '../../../../../models';
 import { useEvents } from '../../../../../hooks';
-import { Modal } from '../../../../../components';
+import { Animated, Modal } from '../../../../../components';
 
 import * as EventLayout from './_components/index';
 import { Spinner } from '@phosphor-icons/react';
@@ -48,7 +48,7 @@ export default function Events() {
         )}
 
         {!isLoading && (
-          <>
+          <Animated.FadeInFromBelowInView>
             {/* Body - Md and Above */}
             <div
               className={clsx(
@@ -72,7 +72,7 @@ export default function Events() {
                 }}
               />
             </div>
-          </>
+          </Animated.FadeInFromBelowInView>
         )}
       </div>
 
