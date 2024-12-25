@@ -7,6 +7,8 @@ function WithoutCover({
   showSeperator = false,
   name,
   onClick,
+  isActive,
+  showStatus,
 }: {
   name: string;
   profile_photo: string;
@@ -15,10 +17,27 @@ function WithoutCover({
   onClick?: () => any;
   cover_photo?: string;
   description?: string;
+  isActive?: boolean;
+  showStatus?: boolean;
 }) {
   return (
     <>
-      <div onClick={onClick} role="button">
+      <div
+        onClick={onClick}
+        role="button"
+        className="grid grid-cols-[auto_1fr] items-center gap-3"
+      >
+        {/* State */}
+        {showStatus && (
+          <div>
+            <div
+              className={clsx(
+                'w-3 h-3 rounded-full',
+                isActive ? 'bg-orange-40' : 'bg-gray-200'
+              )}
+            />
+          </div>
+        )}
         <div className="grid grid-cols-[auto_1fr] gap-2 md:gap-4">
           <div>
             <Image

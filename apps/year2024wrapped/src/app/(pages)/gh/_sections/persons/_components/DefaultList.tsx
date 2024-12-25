@@ -18,20 +18,23 @@ export function DefaultList({ activePerson, onSelect }: Props) {
   return (
     <Card.Container.DefaultContainer className="w-full">
       <div className="space-y-3">
-        {personItems?.map((person, index) => (
-          <Card.Item.DefaultListItem.WithoutCover
-            onClick={() => {
-              onSelect(person);
-            }}
-            key={index}
-            tags={person.tags.join(' | ')}
-            showSeperator={index + 1 !== personItems.length}
-            // cover_photo={person.cover_photo}
-            name={person.name}
-            profile_photo={person.profile_photo}
-            // description={person.description}
-          />
-        ))}
+        {personItems?.map((person, index) => {
+          const isActive = activePerson?.name === person.name;
+          return (
+            <Card.Item.DefaultListItem.WithoutCover
+              onClick={() => {
+                onSelect(person);
+              }}
+              key={index}
+              tags={person.tags.join(' | ')}
+              showSeperator={index + 1 !== personItems.length}
+              name={person.name}
+              profile_photo={person.profile_photo}
+              isActive={isActive}
+              showStatus={true}
+            />
+          );
+        })}
       </div>
     </Card.Container.DefaultContainer>
   );

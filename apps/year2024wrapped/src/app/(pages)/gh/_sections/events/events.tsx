@@ -6,12 +6,13 @@ import { useEvents } from '../../../../../hooks';
 import { Modal } from '../../../../../components';
 
 import * as EventLayout from './_components/index';
+import { Spinner } from '@phosphor-icons/react';
 
 export default function Events() {
   /**
    * Hooks
    */
-  const { eventItems } = useEvents();
+  const { eventItems, isLoading } = useEvents();
 
   /**
    * State
@@ -29,7 +30,7 @@ export default function Events() {
   }, [eventItems]);
 
   return (
-    <div className={clsx('top-container-gradient')}>
+    <div className={clsx('flex-grow', 'top-container-gradient')}>
       <div
         className={clsx(
           'section-container',
@@ -40,29 +41,39 @@ export default function Events() {
         {/* Heading */}
         <EventLayout.Header />
 
-        {/* Body - Md and Above */}
-        <div
-          className={clsx(
-            'hidden md:flex flex-col-reverse lg:flex-row gap-5',
-            'items-center lg:items-start'
-          )}
-        >
-          <EventLayout.DetailedView activeEvent={activeEvent} />
+        {isLoading && (
+          <div className="flex justify-center">
+            <Spinner className="animate-spin" />
+          </div>
+        )}
 
-          <EventLayout.DefaultList
-            activeEvent={activeEvent}
-            onSelect={(event) => setActiveEvent(event)}
-          />
-        </div>
+        {!isLoading && (
+          <>
+            {/* Body - Md and Above */}
+            <div
+              className={clsx(
+                'hidden md:flex flex-col-reverse lg:grid grid-cols-[1.5fr_1fr] gap-5',
+                'items-center lg:items-start'
+              )}
+            >
+              <EventLayout.DetailedView activeEvent={activeEvent} />
 
-        <div className="md:hidden">
-          <EventLayout.StackList
-            onSelect={(event) => {
-              setActiveEvent(event);
-              setShowDetailsModal(true);
-            }}
-          />
-        </div>
+              <EventLayout.DefaultList
+                activeEvent={activeEvent}
+                onSelect={(event) => setActiveEvent(event)}
+              />
+            </div>
+
+            <div className="md:hidden">
+              <EventLayout.StackList
+                onSelect={(event) => {
+                  setActiveEvent(event);
+                  setShowDetailsModal(true);
+                }}
+              />
+            </div>
+          </>
+        )}
       </div>
 
       <EventLayout.Modal

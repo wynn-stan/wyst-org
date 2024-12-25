@@ -31,5 +31,6 @@ export const useEvents = () => {
     eventItems,
     totalItems,
     getEventByName,
+    isLoading,
   };
 };

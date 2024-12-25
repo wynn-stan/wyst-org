@@ -29,9 +29,9 @@ export default function BodyText({
             <Link
               target="_blank"
               href={url}
-              className="border border-gray-200 rounded-full px-3 py-1"
+              className="border border-gray-200 rounded-full px-2 py-1"
             >
-              <small>Visit</small>
+              <small className="smaller font-semibold text-gray">Visit</small>
             </Link>
           </>
         )}

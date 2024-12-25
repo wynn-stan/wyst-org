@@ -4,12 +4,13 @@ import clsx from 'clsx';
 import { PersonsModel } from '../../../../../models';
 import { usePersons } from '../../../../../hooks';
 import * as PersonsLayout from './_components/index';
+import { Spinner } from '@phosphor-icons/react';
 
 export default function Persons() {
   /**
    * Hooks
    */
-  const { personItems } = usePersons();
+  const { personItems, isLoading } = usePersons();
 
   /**
    * State
@@ -27,7 +28,7 @@ export default function Persons() {
   }, [personItems]);
 
   return (
-    <div className={clsx('mid-container-gradient')}>
+    <div className={clsx('flex-grow', 'mid-container-gradient')}>
       <div
         className={clsx(
           'section-container',
@@ -38,26 +39,36 @@ export default function Persons() {
         {/* Heading */}
         <PersonsLayout.Header />
 
-        {/* Body - Md and Above */}
-        <div className="hidden lg:grid grid-cols-[auto_minmax(0px,432px)] gap-5">
-          <PersonsLayout.DetailedView activePerson={activePerson} />
+        {isLoading && (
+          <div className="flex justify-center">
+            <Spinner className="animate-spin" />
+          </div>
+        )}
 
-          <PersonsLayout.DefaultList
-            onSelect={(person) => {
-              setActivePerson(person);
-            }}
-            activePerson={activePerson}
-          />
-        </div>
+        {!isLoading && (
+          <>
+            {/* Body - Md and Above */}
+            <div className="hidden lg:grid grid-cols-[1.5fr_1fr] gap-5">
+              <PersonsLayout.DetailedView activePerson={activePerson} />
 
-        <div className="lg:hidden">
-          <PersonsLayout.StackList
-            onSelect={(person) => {
-              setActivePerson(person);
-              setShowDetailsModal(true);
-            }}
-          />
-        </div>
+              <PersonsLayout.DefaultList
+                onSelect={(person) => {
+                  setActivePerson(person);
+                }}
+                activePerson={activePerson}
+              />
+            </div>
+
+            <div className="lg:hidden">
+              <PersonsLayout.StackList
+                onSelect={(person) => {
+                  setActivePerson(person);
+                  setShowDetailsModal(true);
+                }}
+              />
+            </div>
+          </>
+        )}
       </div>
 
       {/* Modal */}

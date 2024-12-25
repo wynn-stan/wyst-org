@@ -28,7 +28,7 @@ export default function RootNavigation({
     },
   ];
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       <div
         className={clsx(
           'max-w-7xl w-full mx-auto',
@@ -67,7 +67,7 @@ export default function RootNavigation({
           <div className={clsx('w-5 h-5 bg-gray-200 rounded-full')}></div>
         </div>
       </div>
-      <div>{children}</div>
+      {children}
     </div>
   );
 }

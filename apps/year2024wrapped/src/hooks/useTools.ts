@@ -30,5 +30,6 @@ export const useTools = () => {
     toolsItems,
     totalItems,
     getToolByName,
+    isLoading,
   };
 };

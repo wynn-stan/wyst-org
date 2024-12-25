@@ -10,7 +10,7 @@ export function DetailedView({ activeEvent }: Props) {
     <>
       {activeEvent && (
         <Details
-          containerClassName="shadow-[0px_6px_5px_#E89A16]"
+          containerClassName="!max-w-full lg:!max-w[832px] shadow-[0px_6px_5px_#E89A16]"
           details={{
             name: activeEvent.name,
             cover_photo: activeEvent.event_cover_image,

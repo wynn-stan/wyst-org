@@ -19,7 +19,7 @@ export function DefaultList({ activeEvent, onSelect }: Props) {
     <div
       className={clsx(
         'hidden md:flex flex-row lg:flex-col gap-5',
-        'w-full lg:max-w-[432px]',
+        'w-full',
         'overflow-auto no-scrollbar',
         'relative',
         'max-h-[800px] h-full'

@@ -56,7 +56,7 @@ export default function Details({ details, containerClassName }: Props) {
       )}
     >
       <CoverAndProfile {...{ cover_photo, profile_photo }} />
-      <div className="flex flex-col gap-4">
+      <div className="flex-grow flex flex-col gap-4">
         <BodyText {...{ date, description, location, name, socials }} />
 
         {(preview_photos?.length || preview_urls?.length) && (

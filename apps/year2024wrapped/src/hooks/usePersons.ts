@@ -31,5 +31,6 @@ export const usePersons = () => {
     personItems,
     totalItems,
     getPersonByName,
+    isLoading,
   };
 };

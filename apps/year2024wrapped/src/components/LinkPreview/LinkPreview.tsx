@@ -47,7 +47,7 @@ export default function LinkPreview({ url }: { url: string }) {
   return (
     <>
       {isLoading && (
-        <div className="rounded-md shadow-sm bg-gray-200 w-[200px] h-[195px] animate-pulse"></div>
+        <div className="rounded-md shadow-sm bg-gray-200 w-[110px] h-[135px] animate-pulse"></div>
       )}
 
       {!isLoading && previewData && (
@@ -56,7 +56,7 @@ export default function LinkPreview({ url }: { url: string }) {
           href={url}
           className={clsx(
             'rounded-lg overflow-hidden shadow-md bg-white',
-            'w-[200px]'
+            'w-[110px]'
           )}
         >
           <Image
@@ -73,13 +73,13 @@ export default function LinkPreview({ url }: { url: string }) {
           />
           <div className="p-1">
             <small className="smaller !line-clamp-1 font-semibold">
-              {previewData.title}
+              {previewData.title || '--'}
             </small>
             <small className="smaller text-gray !line-clamp-1">
-              {previewData.description}
+              {previewData.description || '--'}
             </small>
             <small className="smaller text-gray !line-clamp-1">
-              {previewData.site_name}
+              {previewData.site_name || '--'}
             </small>
           </div>
         </Link>
