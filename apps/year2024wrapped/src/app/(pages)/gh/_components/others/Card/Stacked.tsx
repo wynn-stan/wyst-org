@@ -138,7 +138,7 @@ function CardListItem({
         role="button"
         className="flex items-center gap-4 justify-between"
       >
-        <div className="grid grid-cols-[auto_1fr] gap-2 md:gap-4">
+        <div className="grid grid-cols-[auto_1fr] gap-2 items-center md:gap-4">
           <div>
             <Image
               width={72}

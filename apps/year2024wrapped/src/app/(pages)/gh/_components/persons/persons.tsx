@@ -54,26 +54,24 @@ export default function Persons() {
           </p>
         </div>
 
-        <LinkPreview url={activePerson?.preview_links?.[0] || ''} />
-
         {/* Body - Md and Above */}
-        <div className="hidden lg:flex gap-5">
+        <div className="hidden lg:grid grid-cols-[auto_minmax(0px,432px)] gap-5">
           {activePerson && (
             <Details
-              containerClassName="shadow-[0px_6px_5px_#E89A16]"
+              containerClassName="shadow-[0px_6px_5px_#D96314]"
               details={{
                 name: activePerson.name,
                 cover_photo: activePerson.cover_photo,
                 description: activePerson.description,
                 profile_photo: activePerson.profile_photo,
-                // preview_photos: activePerson.preview_links,
+                preview_urls: activePerson.preview_links,
                 socials: activePerson.socials,
                 tags: activePerson.tags,
               }}
             />
           )}
 
-          <Stacked.DefaultContainer>
+          <Stacked.DefaultContainer className="w-full">
             <div className="space-y-3">
               {personItems?.map((person, index) => (
                 <Stacked.DefaultListItem
@@ -152,17 +150,19 @@ export default function Persons() {
       {/* Modal */}
       <Modal show={showDetailsModal} onHide={() => setShowDetailsModal(false)}>
         {activePerson && (
-          <Details
-            details={{
-              name: activePerson.name,
-              cover_photo: activePerson.cover_photo,
-              description: activePerson.description,
-              profile_photo: activePerson.profile_photo,
-              // preview_photos: activePerson.preview_links,
-              socials: activePerson.socials,
-              tags: activePerson.tags,
-            }}
-          />
+          <div className="max-w-full">
+            <Details
+              details={{
+                name: activePerson.name,
+                cover_photo: activePerson.cover_photo,
+                description: activePerson.description,
+                profile_photo: activePerson.profile_photo,
+                preview_urls: activePerson.preview_links,
+                socials: activePerson.socials,
+                tags: activePerson.tags,
+              }}
+            />
+          </div>
         )}
       </Modal>
     </div>

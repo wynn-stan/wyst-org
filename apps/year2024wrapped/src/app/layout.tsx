@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head></head>
-      <body className={`${Inter.variable} ${JetBrainsMono.variable}`}>
+      <body className={`${Inter.variable} ${JetBrainsMono.variable} !p-0`}>
         {children}
         <Analytics />
       </body>

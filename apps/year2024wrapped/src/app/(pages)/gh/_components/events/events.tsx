@@ -56,7 +56,10 @@ export default function Events() {
         </div>
         {/* Body - Md and Above */}
         <div
-          className={clsx('hidden md:flex flex-col-reverse lg:flex-row gap-5')}
+          className={clsx(
+            'hidden md:flex flex-col-reverse lg:flex-row gap-5',
+            'items-center lg:items-start'
+          )}
         >
           {activeEvent && (
             <Details

@@ -126,7 +126,7 @@ export function Modal({
         animate={show ? 'visible' : 'hidden'}
         className={clsx(
           sizeClassName,
-          'flex items-center justify-center',
+          'flex items-center justify-center p-4',
           'relative',
           'mx-auto w-full my-6',
           'min-h-[calc(100%-3rem)]',
@@ -134,7 +134,7 @@ export function Modal({
         )}
       >
         <div
-          className="space-y-3"
+          className="space-y-3 w-full"
           //   className={helpers.classNames(
           //     'w-full rounded-lg mx-4 my-auto',
           //     'shadow-3xl bg-white relative'

@@ -1,11 +1,17 @@
 import axios from 'axios';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import queryString from 'query-string';
+import { PreviewMetadataInterface } from '../../interfaces';
+import clsx from 'clsx';
+import Link from 'next/link';
+import useSWR from 'swr';
 
 interface PreviewDataInterface {
   title: string;
   description: string;
   image: string;
+  site_name: string;
 }
 
 export default function LinkPreview({ url }: { url: string }) {
@@ -17,53 +23,68 @@ export default function LinkPreview({ url }: { url: string }) {
   );
   const [loading, setLoading] = useState(true);
 
+  const { data, isLoading, error } = useSWR<{
+    metadata: PreviewMetadataInterface;
+  }>(
+    `/api/getUrlMeta?${queryString.stringify({
+      url,
+    })}`
+  );
   /**
    * Effect
    */
   useEffect(() => {
-    fetch(url)
-      .then((response) => {
-        response.text().then((data) => {
-          const parser = new DOMParser();
-          const doc = parser.parseFromString(data, 'text/html');
-          const title = document.querySelector('title')?.textContent || '';
-          const description =
-            document
-              .querySelector("meta[name='description']")
-              ?.getAttribute('content') || '';
-          const image =
-            document
-              .querySelector("meta[property='og:image']")
-              ?.getAttribute('content') || '';
-
-          console.log({ data, title, description, image });
-          setPreviewData({ title, description, image });
-
-          setLoading(false);
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-        setLoading(false);
+    if (data) {
+      const metadata = data.metadata;
+      setPreviewData({
+        title: metadata?.title || '',
+        description: metadata?.description || '',
+        image: metadata['og:image'],
+        site_name: metadata['og:site_name'],
       });
-  }, [url]);
+      setLoading(false);
+    }
+  }, [data]);
   return (
     <>
-      {loading && <p>Loading...</p>}
-      {!loading && !previewData && <p>Failed to fetch preview</p>}
-      {previewData && (
-        <div>
-          <div>{previewData.title}</div>
-          <div>{previewData.description}</div>
+      {isLoading && (
+        <div className="rounded-md shadow-sm bg-gray-200 w-[200px] h-[195px] animate-pulse"></div>
+      )}
+      {error && <p>Failed to fetch preview</p>}
+
+      {!isLoading && previewData && (
+        <Link
+          target="_blank"
+          href={url}
+          className={clsx(
+            'rounded-lg overflow-hidden shadow-md bg-white',
+            'w-[200px]'
+          )}
+        >
           <Image
+            key={previewData.image}
             width={100}
             height={100}
-            className="w-20 h-20"
-            src={previewData.image}
+            className="max-w-[200px] w-full object-cover aspect-[3/2]"
+            src={
+              previewData.image ||
+              `https://placehold.co/100x100?text=${previewData.title}`
+            }
             alt="cover"
             unoptimized
           />
-        </div>
+          <div className="p-1">
+            <small className="smaller !line-clamp-1 font-semibold">
+              {previewData.title}
+            </small>
+            <small className="smaller text-gray !line-clamp-1">
+              {previewData.description}
+            </small>
+            <small className="smaller text-gray !line-clamp-1">
+              {previewData.site_name}
+            </small>
+          </div>
+        </Link>
       )}
     </>
   );

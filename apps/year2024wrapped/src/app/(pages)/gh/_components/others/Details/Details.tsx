@@ -12,6 +12,8 @@ import { LinkedinIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { LinkPreview } from '../../../../../../components';
+
 interface SocialsInterface {
   twitter?: string;
   linkedin?: string;
@@ -67,7 +69,7 @@ export default function Details({ details, containerClassName }: Props) {
       <div className="flex flex-col gap-4">
         <BodyText {...{ date, description, location, name, socials }} />
 
-        <Previews {...{ preview_photos }} />
+        <Previews {...{ preview_photos, preview_urls }} />
 
         <Footer {...{ socials, tags }} />
       </div>
@@ -159,9 +161,15 @@ function BodyText({
   );
 }
 
-function Previews({ preview_photos }: { preview_photos?: string[] }) {
+function Previews({
+  preview_photos,
+  preview_urls,
+}: {
+  preview_photos?: string[];
+  preview_urls?: string[];
+}) {
   return (
-    <div className="flex gap-4 overflow-y-auto no-scrollbar">
+    <div className="flex gap-4 overflow-y-auto no-scrollbar p-1">
       {preview_photos?.map((url, index) => (
         <Image
           key={index}
@@ -171,6 +179,10 @@ function Previews({ preview_photos }: { preview_photos?: string[] }) {
           src={url}
           className="max-w-[200px] object-cover w-full rounded aspect-[3/2]"
         />
+      ))}
+
+      {preview_urls?.map((url, index) => (
+        <LinkPreview key={index} url={url || ''} />
       ))}
     </div>
   );
