@@ -106,7 +106,6 @@ function CoverAndProfile({
       />
     </div>
   );
-  0;
 }
 
 function BodyText({
@@ -162,7 +161,7 @@ function BodyText({
 
 function Previews({ preview_photos }: { preview_photos?: string[] }) {
   return (
-    <div className="flex gap-4 overflow-y-auto">
+    <div className="flex gap-4 overflow-y-auto no-scrollbar">
       {preview_photos?.map((url, index) => (
         <Image
           key={index}

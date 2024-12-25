@@ -26,7 +26,7 @@ export default function Card({
       className={clsx(
         'p-4',
         'bg-white rounded-lg',
-        'flex items-center gap-3',
+        'grid grid-cols-[auto_1fr] items-center gap-3',
         'md:min-w-[328px] xl:min-w-fit h-fit'
       )}
       onClick={onClick}
@@ -44,7 +44,7 @@ export default function Card({
       )}
 
       {/* Content */}
-      <div className="flex items-center gap-2">
+      <div className="grid grid-cols-[auto_1fr] items-center gap-2">
         {/* Logo */}
         <Image
           alt="profile"

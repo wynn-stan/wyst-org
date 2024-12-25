@@ -5,17 +5,20 @@ import { EventsModel } from '../../../../../models';
 import { useEvents } from '../../../../../hooks';
 import Details from '../others/Details/Details';
 import Card from '../others/Card/Card';
+import { Stacked } from '../others';
+import { Modal } from '../../../../../components';
 
 export default function Events() {
   /**
    * Hooks
    */
-  const { description, eventItems } = useEvents();
+  const { eventItems } = useEvents();
 
   /**
    * State
    */
   const [activeEvent, setActiveEvent] = useState<EventsModel | undefined>();
+  const [showDetailsModal, setShowDetailsModal] = useState(false);
 
   /**
    * Effect
@@ -51,8 +54,8 @@ export default function Events() {
             Ghanaian tech community, sparking new ideas and collaborations.
           </p>
         </div>
-        {/* Body */}
-        <div className="flex flex-col lg:flex-row gap-5">
+        {/* Body - Md and Above */}
+        <div className="hidden md:flex flex-col-reverse lg:flex-row gap-5">
           {activeEvent && (
             <Details
               containerClassName="shadow-[0px_6px_5px_#E89A16]"
@@ -103,7 +106,48 @@ export default function Events() {
             ></div> */}
           </div>
         </div>
+
+        <div className="md:hidden">
+          <Stacked.StackedContainer shadowColor="yellow">
+            <div className="space-y-3">
+              {eventItems?.map((event, index) => (
+                <Stacked.ListItem
+                  onClick={() => {
+                    setShowDetailsModal(true);
+                    setActiveEvent(event);
+                  }}
+                  key={index}
+                  tags={event.tags.join(' | ')}
+                  showSeperator={index + 1 !== eventItems.length}
+                  cover_photo={event.event_cover_image}
+                  name={event.name}
+                  profile_photo={event.logo}
+                  description={event.description}
+                />
+              ))}
+            </div>
+          </Stacked.StackedContainer>
+        </div>
       </div>
+
+      {/* Modal */}
+      <Modal show={showDetailsModal} onHide={() => setShowDetailsModal(false)}>
+        {activeEvent && (
+          <Details
+            details={{
+              name: activeEvent.name,
+              cover_photo: activeEvent.event_cover_image,
+              description: activeEvent.description,
+              profile_photo: activeEvent.logo,
+              date: activeEvent.date,
+              location: activeEvent.location,
+              preview_photos: activeEvent.event_images,
+              socials: activeEvent.socials,
+              tags: activeEvent.tags,
+            }}
+          />
+        )}
+      </Modal>
     </div>
   );
 }

@@ -9,7 +9,7 @@ export interface PersonsModel {
   };
   cover_photo: string;
   description: string;
-  preview_links: string;
+  preview_links: string[];
   profile_photo: string;
   twitter_handle: string;
 }
