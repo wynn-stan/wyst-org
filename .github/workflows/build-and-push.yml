@@ -1,5 +1,8 @@
 name: Build and Push
 
+permissions: write-all # Allow wide scope write access for GITHUB_TOKEN
+
+
 on:
   push:
     branches: [ "project/2024wrapped" ]
