@@ -1,0 +1,36 @@
+name: Build and Push
+
+on:
+  push:
+    branches: [ "project/2024wrapped" ]
+  pull_request:
+    branches: [ "project/2024wrapped" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Build
+      run: |
+       docker build -t ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:latest .
+
+    - name: Login to Github Container Registry
+      run: |
+        echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ github.repository_owner }} --password stdin
+
+    - name: Push image to Github Container Registry
+      run: |
+        docker push ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:latest
+        
