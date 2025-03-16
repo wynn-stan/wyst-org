@@ -1,6 +1,8 @@
 name: Build and Push
 
-permissions: write-all # Allow wide scope write access for GITHUB_TOKEN
+permissions:
+  contents: write
+  packages: write
 
 
 on:
