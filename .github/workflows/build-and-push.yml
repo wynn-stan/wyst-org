@@ -2,9 +2,9 @@ name: Build and Push
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "project/2024wrapped" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "project/2024wrapped" ]
 
 jobs:
   build:
